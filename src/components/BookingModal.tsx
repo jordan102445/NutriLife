@@ -16,13 +16,30 @@ interface BookingModalProps {
 }
 
 const BookingModal: React.FC<BookingModalProps> = ({ handleFormSubmit, formData, setFormData, setShowBookingModal }) => {
+
+  const handleCloseModal = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    setShowBookingModal(false);
+  };
+
+ 
+  const handleModalClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      onClick={() => setShowBookingModal(false)}
+    >
+      <div
+        className="bg-white rounded-xl p-8 max-w-md w-full mx-4"
+        onClick={handleModalClick}
+      >
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-2xl font-semibold text-gray-800">Book a Consultation</h3>
+          <h3 className="text-2xl font-semibold text-gray-800">Букирај Консултација</h3>
           <button
-            onClick={() => setShowBookingModal(false)}
+            onClick={handleCloseModal} 
             className="text-gray-500 hover:text-gray-700 cursor-pointer"
           >
             <i className="fa-solid fa-times text-xl"></i>
